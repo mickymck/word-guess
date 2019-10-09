@@ -29,7 +29,6 @@ def run_game():
     game_board = []
     user_guesses = []
     wrong_guesses = []
-    guess_count = 8
 
     random_word = choose_random_word(word_bank)
     print(random_word)
@@ -40,8 +39,9 @@ def run_game():
 
     while game_over == False:
 
-        guess_count -= len(wrong_guesses)
+        guess_count = 8 - len(wrong_guesses)
         print("Remaining guesses: ", guess_count)
+        print(wrong_guesses)
 
         guess = input("Give me a letter. ANY letter! - " )
         user_guesses.append(guess)
@@ -59,10 +59,11 @@ def run_game():
 
         print(' '.join(game_board))
 
-    #     if len(guess_count) < 1 or "_" not in game_board:
-    #         game_over = True
-
-    # if game_over:
-    #     print("Game Over. Play again.")
+        if guess_count < 1:
+            game_over = True
+            print("Game Over. Play again.")
+        if "_" not in game_board:
+            game_over = True
+            print("Game Over. You win.")
     
 run_game()
