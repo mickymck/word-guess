@@ -20,34 +20,25 @@ with open ("words.txt") as file:
 def choose_random_word(word_bank):
     random_index = (random.randrange(0, len(word_bank), 1))
     random_word = word_bank[random_index]
-    return random_word
-
-# creates a list of underscores, one for each letter in the random word
-def show_blanks(random_word):
-    blanks = []
-    blanks.append('_ ' * len(random_word))
-    return blanks
-
-# display the number of remaining guesses
-def guess_count(guesses):
-    remaining = (8 - guesses)
-    return remaining
-
-# computer must prompt the user to make a guess
-def prompt_guess():
-    letter_guess = input("Give me a letter. ANY letter! - " )
-    return letter_guess
+    return random_word.lower()
 
 def run_game():
-    # grab the word at word_bank[index] based on random number
+    game_board = []
+    right_guesses = []
+    wrong_guesses = []
+    guess_count = 8 - len(wrong_guesses)
+
     random_word = choose_random_word(word_bank)
     print(random_word)
-    game_board = show_blanks(random_word)
-    print(game_board)
-    remaining_guesses = guess_count(0)
-    print(remaining_guesses)
-    opening_prompt = prompt_guess()
-    print(opening_prompt)
-    
 
+    while guess_count > 0:
+        print(game_board)
+        guess = input("Give me a letter. ANY letter! - " )
+
+        for letter in random_word:
+            if guess == letter:
+                game_board += letter
+            else:
+                game_board += '_'
+    
 run_game()
