@@ -39,6 +39,10 @@ def run_game():
 
 # fix the right/wrong guesses or general guesses, for the win!
 
+    if len(user_guesses) == 0:
+        game_board.append('_ ' * len(random_word))
+        print(' '.join(game_board))
+
     while guess_count > 0:
 
         guess = input("Give me a letter. ANY letter! - " )
