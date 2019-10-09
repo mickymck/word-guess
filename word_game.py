@@ -24,20 +24,12 @@ def choose_random_word(word_bank):
 
 def run_game():
     game_board = []
-    right_guesses = []
+    user_guesses = []
     wrong_guesses = []
-    guess_count = 8 - len(wrong_guesses)
+    guess_count = 8
 
     random_word = choose_random_word(word_bank)
     print(random_word)
-
-    user_guesses = []
-    
-    # for letter in random_word:
-    #     game_board += '_'
-    # print(game_board)
-
-# fix the right/wrong guesses or general guesses, for the win!
 
     if len(user_guesses) == 0:
         game_board.append('_ ' * len(random_word))
@@ -55,8 +47,12 @@ def run_game():
             else:
                 game_board.append('_')
 
+        for guess in user_guesses:
+            if guess not in random_word and guess not in wrong_guesses:
+                wrong_guesses.append(guess)
+
         print(' '.join(game_board))
-        
-        print(user_guesses)
+
+        print(wrong_guesses)
     
 run_game()
