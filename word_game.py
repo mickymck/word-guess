@@ -22,7 +22,10 @@ def choose_random_word(word_bank):
     random_word = word_bank[random_index]
     return random_word.lower()
 
+# fix it so that the guess count goes down with every wrong guess, and that the game ends when guess-count = 0
+
 def run_game():
+    game_over = False
     game_board = []
     user_guesses = []
     wrong_guesses = []
@@ -35,7 +38,10 @@ def run_game():
         game_board.append('_ ' * len(random_word))
         print(' '.join(game_board))
 
-    while guess_count > 0:
+    while game_over == False:
+
+        guess_count -= len(wrong_guesses)
+        print("Remaining guesses: ", guess_count)
 
         guess = input("Give me a letter. ANY letter! - " )
         user_guesses.append(guess)
@@ -53,6 +59,10 @@ def run_game():
 
         print(' '.join(game_board))
 
-        print(wrong_guesses)
+    #     if len(guess_count) < 1 or "_" not in game_board:
+    #         game_over = True
+
+    # if game_over:
+    #     print("Game Over. Play again.")
     
 run_game()
