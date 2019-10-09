@@ -30,23 +30,29 @@ def run_game():
 
     random_word = choose_random_word(word_bank)
     print(random_word)
+
+    user_guesses = []
     
-    for letter in random_word:
-        game_board += '_'
-    print(game_board)
+    # for letter in random_word:
+    #     game_board += '_'
+    # print(game_board)
+
+# fix the right/wrong guesses or general guesses, for the win!
 
     while guess_count > 0:
-    
+
         guess = input("Give me a letter. ANY letter! - " )
+        user_guesses.append(guess)
+        game_board = []
 
         for letter in random_word:
-            if guess == letter:
-                game_board += letter
-                right_guesses.append(guess)
+            if letter in user_guesses:
+                game_board.append(letter)
             else:
-                game_board += '_'
-                wrong_guesses.append(guess)
+                game_board.append('_')
 
-        print(game_board)
+        print(' '.join(game_board))
+        
+        print(user_guesses)
     
 run_game()
