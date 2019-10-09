@@ -29,21 +29,26 @@ def run_game():
     game_board = []
     user_guesses = []
     wrong_guesses = []
+    guess_count = 8
 
     random_word = choose_random_word(word_bank)
-    print(random_word)
 
     if len(user_guesses) == 0:
         game_board.append('_ ' * len(random_word))
+        print('')
+        print('')
         print(' '.join(game_board))
+        print('')
 
     while game_over == False:
-
-        guess_count = 8 - len(wrong_guesses)
+        print('')
         print("Remaining guesses: ", guess_count)
-        print(wrong_guesses)
+        print('')
+        print("Wrong guesses: ", wrong_guesses)
+        print('')
 
         guess = input("Give me a letter. ANY letter! - " )
+        print('')
         user_guesses.append(guess)
         game_board = []
 
@@ -59,11 +64,19 @@ def run_game():
 
         print(' '.join(game_board))
 
-        if guess_count < 1:
+        guess_count = 8 - len(wrong_guesses)
+
+        if guess_count == 0:
             game_over = True
-            print("Game Over. Play again.")
+            print('')
+            print("Game Over. You did not win.")
+            print('')
+            print("The word was", random_word)
+            print('')
         if "_" not in game_board:
             game_over = True
+            print('')
             print("Game Over. You win.")
+            print('')
     
 run_game()
