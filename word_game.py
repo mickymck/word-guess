@@ -1,7 +1,6 @@
 
 import random
 
-# turn words.txt into a list of words
 with open ("words.txt") as file:
     word_bank = file.read().split()
 
@@ -20,7 +19,6 @@ def game_setup (word_bank):
 
 game_setup(word_bank)
 
-# function to choose a random number between 0 and the end of the word bank list, and make that the word index I wish to grab, then return the word
 def choose_random_word(list):
     random_index = (random.randrange(0, len(list), 1))
     random_word = list[random_index]
@@ -71,7 +69,6 @@ def run_game():
             if len(re_guess) == 1 and re_guess.isalpha():
                 legit_guess = True
                 user_guesses.append(re_guess)
-            
 
         game_board = []
 
