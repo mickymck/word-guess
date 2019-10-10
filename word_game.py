@@ -33,7 +33,7 @@ def run_game():
     wrong_guesses = []
     guess_count = 8
 
-    print("Word Guess: where I know a word, and you don't!")
+    print("\nWORD GUESS: where I know a word, and you don't! Yet...\n")
 
     level = input("Choose difficulty level: [E]asy [M]edium or [H]ard: " )
 
@@ -44,6 +44,7 @@ def run_game():
     elif level == "h" or level == "H":
         random_word = choose_random_word(hard_words)
 
+    print(f"\nYour word has {len(random_word)} letters to guess.\n")
 
     if len(user_guesses) == 0:
         game_board.append('_ ' * len(random_word))
@@ -90,15 +91,11 @@ def run_game():
 
         if guess_count == 0:
             game_over = True
-            print('')
-            print("Game Over. You did not win.")
-            print('')
+            print("\nGame Over. You did not win.\n")
             print("The word was", random_word)
             print('')
         if "_" not in game_board:
             game_over = True
-            print('')
-            print("Game Over. You win.")
-            print('')
+            print("\nGame Over. You win.\n")
     
 run_game()
