@@ -12,9 +12,9 @@ def game_setup (word_bank):
     for word in word_bank:
         if len(word) > 3 and len(word) < 7:
             easy_words.append(word)
-        if len(word) > 6 and len(word) < 9:
+        if len(word) > 5 and len(word) < 9:
             medium_words.append(word)
-        if len(word) > 8:
+        if len(word) > 7:
             hard_words.append(word)
 
 game_setup(word_bank)
@@ -53,22 +53,34 @@ def run_game():
 
     while game_over == False:
         print('')
-        print("Remaining guesses: ", guess_count)
+        print(f"Remaining guesses: {guess_count}")
         print('')
-        print("Wrong guesses: ", wrong_guesses)
+        print(f"Wrong guesses: {wrong_guesses}")
         print('')
 
         guess = input("Guess a letter: " )
         print('')
         legit_guess = False
-        if len(guess) == 1 and guess.isalpha():
+
+        if len(guess) == 1 and guess not in wrong_guesses and guess.isalpha():
             legit_guess = True
             user_guesses.append(guess)
+
         while legit_guess == False:
-            re_guess = input("Guess a SINGLE LETTER: " )
-            if len(re_guess) == 1 and re_guess.isalpha():
+
+            if len(guess) > 1:
+                print("\nOne at a time, please. \n")
+            elif not guess.isalpha():
+                print("\nLetters only, please. \n")
+            elif guess in wrong_guesses:
+                print("\nYou already guessed that letter. \n")
+            
+            guess = input("Try again: " )
+                            
+            if len(guess) == 1 and guess.isalpha() and guess not in wrong_guesses:
                 legit_guess = True
-                user_guesses.append(re_guess)
+                user_guesses.append(guess)
+
 
         game_board = []
 
