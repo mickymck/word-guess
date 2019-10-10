@@ -97,5 +97,13 @@ def run_game():
         if "_" not in game_board:
             game_over = True
             print("\nGame Over. You win.\n")
+
+        if game_over == True:
+            replay = input("\nPlay again? [Y]es or [N]o way: ")
+            if replay.lower() == "y":
+                game_setup(word_bank)
+                run_game()
+            else:
+                print("\nBoo.\n") 
     
 run_game()
