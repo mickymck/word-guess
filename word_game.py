@@ -53,9 +53,9 @@ def run_game():
 
     while game_over == False:
         print('')
-        print(f"Remaining guesses: {guess_count}")
+        print(f'Remaining guesses: {guess_count}')
         print('')
-        print(f"Wrong guesses: {wrong_guesses}")
+        print('Wrong guesses: ' + ' '.join(wrong_guesses))
         print('')
 
         guess = input("Guess a letter: " )
