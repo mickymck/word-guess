@@ -1,3 +1,5 @@
+to run, type `python3 word_game.py`
+
 # Mystery Word
 
 ## Description
